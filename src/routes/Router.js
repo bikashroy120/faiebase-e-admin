@@ -7,6 +7,8 @@ import SellCar from "../pages/SellCar";
 import Settings from "../pages/Settings";
 import Category from "../pages/Category";
 import AddCategory from "../pages/AddCategory";
+import Brand from "../pages/Brand";
+import AddBrand from "../pages/AddBrand";
 
 const Router = () => {
   return (
@@ -18,6 +20,8 @@ const Router = () => {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/category" element={<Category />} />
       <Route path="/add-category" element={<AddCategory />} />
+      <Route path="/brand" element={<Brand />} />
+      <Route path="/add-brand" element={<AddBrand />} />
       <Route path="/sell-car" element={<SellCar />} />
       <Route path="/settings" element={<Settings />} />
     </Routes>

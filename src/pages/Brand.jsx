@@ -2,7 +2,7 @@ import React from 'react'
 import DataTable, { createTheme } from 'react-data-table-component';
 import { useNavigate } from 'react-router-dom';
 
-const Category = () => {
+const Brand = () => {
 
     const navigate =  useNavigate()
 
@@ -35,11 +35,6 @@ const Category = () => {
     ]
     
     const columns = [
-        {
-            name: 'Img',
-            selector: row => <img src={row.img} className={"w-[50px] h-[50px]"}/>,
-        
-        },
         {
             name:"Id",
             selector: row => row.id,
@@ -105,8 +100,8 @@ const Category = () => {
   return (
     <div className='dasbord_laout text-white'>
         <div className='flex items-center justify-between'>
-            <h2 className='text-[25px] font-semibold'>Product Category</h2>
-            <button onClick={()=>navigate("/add-category")} className='py-3 px-5 text-[20px] font-medium rounded-lg bg-yellow-600 text-white'>Add Category</button>
+            <h2 className='text-[25px] font-semibold'>Product Brand</h2>
+            <button onClick={()=>navigate("/add-brand")} className='py-3 px-5 text-[20px] font-medium rounded-lg bg-yellow-600 text-white'>Add Brand</button>
         </div>
 
         <div className='w-full h-auto border border-gray-300 mt-10'>
@@ -123,4 +118,4 @@ const Category = () => {
   )
 }
 
-export default Category
+export default Brand
