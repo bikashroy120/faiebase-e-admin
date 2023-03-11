@@ -6,7 +6,7 @@ import mileStaticsData from "../assets/dummy-data/mileStatics";
 
 const mileChart = () => {
   return (
-    <ResponsiveContainer width="100%">
+    <ResponsiveContainer className={"w-full"}>
       <BarChart data={mileStaticsData}>
         <XAxis dataKey="name" stroke="#2884ff" />
         <Bar dataKey="mileStats" stroke="#2884ff" fill="#2884ff" barSize={30} />

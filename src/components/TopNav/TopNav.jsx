@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import profileImg from "../../assets/images/profile-02.png";
 import "./top-nav.css";
 
-const TopNav = () => {
+const TopNav = ({open}) => {
   return (
-    <div className="top__nav">
+    <div className={open ? "top__nav duration-500" : "top__nav2 duration-500"}>
       <div className="top__nav-wrapper">
         <div className="search__box">
           <input type="text" placeholder="search or type" />

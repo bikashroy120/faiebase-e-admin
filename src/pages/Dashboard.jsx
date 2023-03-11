@@ -34,16 +34,16 @@ const distanceObj = {
 
 const Dashboard = () => {
   return (
-    <div className="dashboard">
+    <div className="dashboard w-full">
       <div className="dashboard__wrapper">
-        <div className="dashboard__cards">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5">
           <SingleCard item={carObj} />
           <SingleCard item={tripObj} />
           <SingleCard item={clientObj} />
           <SingleCard item={distanceObj} />
         </div>
 
-        <div className="statics">
+        <div className="w-full grid lg:grid-cols-2 md:grid-cols-1 gap-5 mt-8 ">
           <div className="stats">
             <h3 className="stats__title">Miles Statistics</h3>
             <MileChart />
@@ -60,6 +60,7 @@ const Dashboard = () => {
             <RecommendCarCard item={item} key={item.id} />
           ))}
         </div> */}
+
       </div>
     </div>
   );

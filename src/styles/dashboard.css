@@ -61,6 +61,7 @@
 
 .stats {
   background: var(--primary-color);
+  width: 100%;
   padding: 30px;
   border-radius: 5px;
   height: 320px;

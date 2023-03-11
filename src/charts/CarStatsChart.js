@@ -12,7 +12,7 @@ import carStaticsData from "../assets/dummy-data/carStatics";
 
 const CarStatsChart = () => {
   return (
-    <ResponsiveContainer width="100%">
+    <ResponsiveContainer className={"w-full"}>
       <AreaChart
         data={carStaticsData}
         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
