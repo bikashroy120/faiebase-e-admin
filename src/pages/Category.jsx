@@ -15,22 +15,22 @@ const Category = () => {
         {
             title:"Laptop",
             img:"https://static-01.daraz.com.bd/p/84d24f34887178b2256107483e7c415c.jpg_720x720.jpg_.webp",
-            id:"54877455"
+            id:"548774556"
         },
         {
             title:"Laptop",
             img:"https://static-01.daraz.com.bd/p/84d24f34887178b2256107483e7c415c.jpg_720x720.jpg_.webp",
-            id:"54877455"
+            id:"548774557"
         },
         {
             title:"Laptop",
             img:"https://static-01.daraz.com.bd/p/84d24f34887178b2256107483e7c415c.jpg_720x720.jpg_.webp",
-            id:"54877455"
+            id:"548774558"
         },
         {
             title:"Laptop",
             img:"https://static-01.daraz.com.bd/p/84d24f34887178b2256107483e7c415c.jpg_720x720.jpg_.webp",
-            id:"54877455"
+            id:"548774559"
         },
     ]
     

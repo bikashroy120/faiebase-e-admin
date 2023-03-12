@@ -1,11 +1,12 @@
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import {storage} from "../../firebase-config";
 import {imageActions} from "./image-slice"
 
 
 
-export const uploadImage = ({upImg})=>{
-    const storageRef = ref(storage, `image/${Date.now()}-${upImg.name}`);
+export const uploadImage = (upImg)=>{
+  console.log(upImg)
+    const storageRef = ref(storage, `image/${Date.now()}-${upImg?.name}`);
     const uploadTask = uploadBytesResumable(storageRef, upImg);
     return (dispatch)=>{
         dispatch(imageActions.setLoadding(true))
