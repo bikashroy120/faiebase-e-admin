@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {BsArrowLeft} from "react-icons/bs"
 import {BiCloudUpload} from "react-icons/bi"
+import { useSelector } from 'react-redux'
 
 const AddCategory = () => {
-
+    const {imageUrl} = useSelector((state)=>state.img)
     const [file, setFile] = useState("");
-
+    console.log(imageUrl)
   return (
     <div className='dasbord_laout' >
         <div className=''>
