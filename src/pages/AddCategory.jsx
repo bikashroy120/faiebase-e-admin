@@ -1,22 +1,50 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {BsArrowLeft} from "react-icons/bs"
 import {BiCloudUpload} from "react-icons/bi"
 import { useDispatch, useSelector } from 'react-redux'
-import {uploadImage} from "../store/ImageUpload/image-action"
+import {uploadImage,deleteImage} from "../store/ImageUpload/image-action"
+import {addCategory} from "../store/Product/product-action"
 import {MdDelete} from "react-icons/md"
+import { toast } from 'react-toastify'
+import { saveCategory } from '../FairbaseServices'
 
 
 const AddCategory = () => {
     const {imageUrl} = useSelector((state)=>state.img)
     const dispatch = useDispatch();
     const [file, setFile] = useState("");
-    console.log(imageUrl)
+    const [isLoadding,setIsLoadding] = useState(false)
+    const [title,setTitle] = useState("")
+    const navigate =  useNavigate()
 
     const handelChance = (e)=>{
       const upImg = e.target.files[0];
-      // console.log(upImg)
       dispatch(uploadImage(upImg))
+    }
+
+    const DeleteImage = ()=>{
+      dispatch(deleteImage(imageUrl))
+    }
+
+    const AddCategoryData = async()=>{
+      if(title === "" || imageUrl === ""){
+        toast.error("file all data")
+      }else{
+        setIsLoadding(true)
+        const data ={
+          title:title,
+          imgUrl:imageUrl,
+        }
+
+         saveCategory(data).then(()=>{
+            setIsLoadding(false)
+            navigate('/category')
+            toast.success("Category add success")
+         })
+
+      }
+
     }
 
   return (
@@ -38,7 +66,7 @@ const AddCategory = () => {
               className='w-full h-full object-cover'
             />
               {
-                imageUrl && <button className=' absolute top-0 bottom-0  items-center hidden group-hover:flex justify-center w-[100%] h-[100%] bg-black z-30 bg-opacity-70 duration-300'><MdDelete className='text-[40px] text-red-500'/></button>
+                imageUrl && <button onClick={DeleteImage} className=' absolute top-0 bottom-0  items-center hidden group-hover:flex justify-center w-[100%] h-[100%] bg-black z-30 bg-opacity-70 duration-300'><MdDelete className='text-[40px] text-red-500'/></button>
               }
             </div>
             <div className='w-full'>
@@ -46,11 +74,11 @@ const AddCategory = () => {
                 <label htmlFor='for' className='text-[25px] text-center flex items-center gap-3 cursor-pointer '>
                     Select Image <BiCloudUpload/>
                 </label>
-                <input type="file" name="" id="for" style={{display:"none"}} onChange={(e) => handelChance(e)} />
+                <input type="file" name="" id="for" style={{display:"none"}} onChange={handelChance} />
               </div>
-              <input placeholder='Enter Title' type="text" className='w-full py-3 text-white text-[20px] font-medium px-3 border border-gray-500 rounded-xl bg-transparent' />
+              <input placeholder='Enter Title' value={title} onChange={(e)=>setTitle(e.target.value)} type="text" className='w-full py-3 text-white text-[20px] font-medium px-3 border border-gray-500 rounded-xl bg-transparent' />
               <div className='flex items-center justify-center'>
-              <button className='mt-5 p-3 px-8 rounded-xl text-[20px] text-center bg-green-600 text-white'>Save</button>
+              <button onClick={AddCategoryData} className='mt-5 p-3 px-8 rounded-xl text-[20px] text-center bg-green-600 text-white'> Save </button>
               </div>
             </div>
         </div>
