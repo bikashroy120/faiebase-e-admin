@@ -39,6 +39,7 @@ export const deleteImage = (deleteUrl)=>{
       deleteObject(desertRef)
       .then(() => {
         dispatch(imageActions.setLoadding(false))
+        dispatch(imageActions.setImageUrl(""))
       })
       .catch((error) => {
         console.log(error);

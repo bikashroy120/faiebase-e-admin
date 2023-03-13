@@ -1,43 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import DataTable, { createTheme } from 'react-data-table-component';
 import { useNavigate } from 'react-router-dom';
+import Loder from '../components/loder/Loder';
+import { getCategory } from '../FairbaseServices';
 
 const Category = () => {
 
     const navigate =  useNavigate()
 
-    const data = [
-        {
-            title:"Laptop",
-            img:"https://static-01.daraz.com.bd/p/84d24f34887178b2256107483e7c415c.jpg_720x720.jpg_.webp",
-            id:"54877455"
-        },
-        {
-            title:"Laptop",
-            img:"https://static-01.daraz.com.bd/p/84d24f34887178b2256107483e7c415c.jpg_720x720.jpg_.webp",
-            id:"548774556"
-        },
-        {
-            title:"Laptop",
-            img:"https://static-01.daraz.com.bd/p/84d24f34887178b2256107483e7c415c.jpg_720x720.jpg_.webp",
-            id:"548774557"
-        },
-        {
-            title:"Laptop",
-            img:"https://static-01.daraz.com.bd/p/84d24f34887178b2256107483e7c415c.jpg_720x720.jpg_.webp",
-            id:"548774558"
-        },
-        {
-            title:"Laptop",
-            img:"https://static-01.daraz.com.bd/p/84d24f34887178b2256107483e7c415c.jpg_720x720.jpg_.webp",
-            id:"548774559"
-        },
-    ]
+    const [category,setCategory] = useState(null)
+
+    useEffect(()=>{
+        const getData = async()=>{
+            await getCategory().then((data)=>{
+                setCategory(data)
+             })
+        }
+        getData()
+    },[])
+
+ 
     
     const columns = [
         {
             name: 'Img',
-            selector: row => <img src={row.img} className={"w-[50px] h-[50px]"}/>,
+            selector: row => <img src={row.imgUrl} className={"w-[50px] h-[50px]"}/>,
         
         },
         {
@@ -110,14 +97,20 @@ const Category = () => {
         </div>
 
         <div className='w-full h-auto border border-gray-300 mt-10'>
-        <DataTable
-            columns={columns}
-            data={data}
-            theme="solarized"
-            customStyles={customStyles}
-            pagination
-            highlightOnHover
-        />
+                {
+                    !category ? (<div className='flex items-center justify-center p-5'>
+                        <div className="lds-dual-ring"></div>
+                    </div>) : (
+                        <DataTable
+                        columns={columns}
+                        data={category}
+                        theme="solarized"
+                        customStyles={customStyles}
+                        pagination
+                        highlightOnHover
+                    />
+                    )
+                }
         </div>
     </div>
   )
